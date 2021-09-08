@@ -24,7 +24,7 @@ jobs:
       - name: Set nvim version
         id: vars
         run: |
-          echo "::set-output name=nvim_ref::$(nvim --version | head -1 | cut -d' ' -f2 | cut -d- -f 3)"
+          echo "::set-output name=nvim_ref::$(nvim --version | head -1 | cut -d' ' -f2)"
 
       - uses: actions/checkout@v2
 
@@ -39,7 +39,7 @@ jobs:
         with:
           repository: neovim/neovim
           path: neovim
-          ref: ${{ steps.vars.outputs.nvim_ref }}
+          ref: ${{ matrix.version }}
 
       - uses: actions/checkout@v2
         with:
